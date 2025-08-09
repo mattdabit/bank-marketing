@@ -17,7 +17,7 @@ dependencies:
   - lightgbm>=3.3.0
   - ipython
   - ipykernel
-  - python-kaleido>=0.2.1
+  - python-kaleido==0.2.1
   - pytorch==2.5.1
   - mlflow==3.2.0
   - imbalanced-learn==0.13.0
