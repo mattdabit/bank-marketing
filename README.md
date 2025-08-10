@@ -21,6 +21,9 @@ A repository focused on assessing whether someone will accept a marketing campai
         - [Calls X Duration analysis](#calls-x-duration-analysis)
         - [Days since last contact analysis](#days-since-last-contact-analysis)
         - [Correlation Matrix](#correlation-matrix)
+        - [Consumer price index analysis](#consumer-price-index-analysis)
+        - [Consumer confidence index analysis](#consumer-confidence-index-analysis)
+        - [Previous outcome analysis](#previous-outcome-analysis)
 
 ## Link to notebook
 
@@ -192,4 +195,28 @@ The number of contacts and number of days
 that passed by after the client was last
 being negatively correlated is also not surprising.
 We should be careful of multicollinearity with our dataset.
-This won't be an issue for decision tree and SVM models but it will be for logistic regression. 
+This won't be an issue for decision trees and SVM models, but it will be for logistic regression. 
+
+#### Consumer price index analysis
+
+<img src="images/consumer_price_index_acceptance_ratio.png"/>
+
+The consumer price index looks static across the various levels.
+Now it seems like the ratio of acceptance goes up at the 94.25 value, 
+but without more data I would hesitate to make a judgment. 
+
+#### Consumer confidence index analysis
+
+<img src="images/consumer_confidence_index_acceptance_ratio.png"/>
+
+Consumer confidence may affect acceptance. I am not entirely convinced considering that the acceptance count
+seems stagnant for the 3 index ratings with the most calls.
+It is promising to see the ratio of acceptance jump with the `-32.5` rating.
+However, this could just be an outlier. 
+
+#### Previous outcome analysis
+
+<img src="images/poutcome_acceptance_ratio.png"/>
+
+Retention is over 65% for customers that previously accepted a campaign.
+It may be prudent to contact these types of customers to see why they chose our product. 
