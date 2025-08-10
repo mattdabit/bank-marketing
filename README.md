@@ -10,7 +10,7 @@ A repository focused on assessing whether someone will accept a marketing campai
 - [Understanding the business](#understanding-the-business)
 - [Understanding the features](#understanding-the-features)
 - [Understanding the data](#understanding-the-data)
-    - [Imbalance in the data](#anomalies-in-the-data)
+    - [Imbalance in the data](#imbalance-in-the-data)
     - [Univariate and Multivariate Analysis](#univariate-and-multivariate-analysis)
         - [Age analysis](#age-analysis)
         - [Job analysis](#job-analysis)
