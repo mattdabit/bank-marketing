@@ -19,6 +19,8 @@ A repository focused on assessing whether someone will accept a marketing campai
         - [Duration analysis](#duration-analysis)
         - [Calls analysis](#calls-analysis)
         - [Calls X Duration analysis](#calls-x-duration-analysis)
+        - [Days since last contact analysis](#days-since-last-contact-analysis)
+        - [Correlation Matrix](#correlation-matrix)
 
 ## Link to notebook
 
@@ -171,3 +173,23 @@ That is the more you call a prospect, the more likely they will say no.
 I was surprised by this finding. I would have expected that the more calls would lead to brief conversation if a person
  picked up, but there is barely a correlation between the values. 
 
+#### Days since last contact analysis
+
+<img src="images/days_since_last_contact_acceptance_ratio.png"/>
+
+The histogram above indicates that the best time to follow up with a customer is within the week of the first call.
+I would not be surprised
+if the banking institution provided guidance to their employees
+to call on the 3rd and 6th days after their first call.  
+
+#### Correlation Matrix
+
+<img src="images/correlation.png"/>
+
+Social and economic attributes are highly correlated.
+This fact may lend itself to PCA or early feature pruning.
+The number of contacts and number of days
+that passed by after the client was last
+being negatively correlated is also not surprising.
+We should be careful of multicollinearity with our dataset.
+This won't be an issue for decision tree and SVM models but it will be for logistic regression. 
