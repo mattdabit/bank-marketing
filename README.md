@@ -10,7 +10,10 @@ A repository focused on assessing whether someone will accept a marketing campai
 - [Understanding the business](#understanding-the-business)
 - [Understanding the features](#understanding-the-features)
 - [Understanding the data](#understanding-the-data)
-  - 
+    - [Imbalance in the data](#anomalies-in-the-data)
+    - [Univariate and Multivariate Analysis](#univariate-and-multivariate-analysis)
+      - [Age analysis](#age-analysis)
+      - [Job analysis](#job-analysis)
 
 ## Link to notebook
 
@@ -43,7 +46,7 @@ money. The bank partner commissioning this study is seeking to increase campaign
 profiles that are more likely to accept their offerings. The bank partner would like a model that can better predict the
 type of person that would accept offers from our partner bank.
 
-### Understanding the Features
+## Understanding the Features
 
 ```
 Input variables:
@@ -75,4 +78,39 @@ Input variables:
 Output variable (desired target):
 21 - y - has the client subscribed a term deposit? (binary: 'yes','no')
 ```
-- [Understanding the data](#understanding-the-data)
+
+## Understanding the data
+
+The first thing that jumps out is how imbalanced the dataset is.
+This is to be expected considering that we are working
+with telemarketing data.
+I was also able to find some strong predictors for the accepting class.
+In particular, the
+following fields show strong promise: month, employment, number of contacts.
+It is also important to note that the pdays
+column using 999 to signify that fact the client was not priorly contacted.
+The author of this dataset also recommends
+avoiding the duration column as it highly affects the output.
+
+### Imbalance in the data
+<img src="images/acceptance_count.png"/>
+
+Here you can see the lack of balance. As spoken about before, this is expected with telemarketing campaigns. 
+
+### Univariate and Multivariate Analysis
+#### Age analysis
+<img src="images/age_box.png"/>
+
+In the above box plot we see that a majority of contacts are between the ages of 32 and 47. 
+
+<img src="images/age_acceptance_ratio.png"/>
+
+Here we notice that the younger and older contacts are more likely to accept. We see some strange behavior going on when
+we creep pass the upper fence of the box plot. It may be valuable to introduce a cutoff age to ensure our models do not over 
+index on age. 
+
+#### Job analysis
+<img src="images/job_acceptance_ratio.png"/>
+
+Given what we learned about the correlation between age and acceptance rate it should come to no suprise that students and
+retirees are more likely to accept a campaign.
