@@ -16,6 +16,9 @@ A repository focused on assessing whether someone will accept a marketing campai
         - [Job analysis](#job-analysis)
         - [Education analysis](#education-analysis)
         - [Month analysis](#month-analysis)
+        - [Duration analysis](#duration-analysis)
+        - [Calls analysis](#calls-analysis)
+        - [Calls X Duration analysis](#calls-x-duration-analysis)
 
 ## Link to notebook
 
@@ -143,4 +146,28 @@ In particular, March, December, September and October all had high
 acceptance rates.
 We may be able to leverage this as a business to reduce costs during slow months.
 This somewhat differs from the paper
-which found that June was a very successful month. 
+which found that June was a very successful month.
+
+#### Duration analysis
+
+<img src="images/duration_acceptance_ratio.png"/>
+
+The duration of a call seems to be a strong predictor; the longer someone is on the phone, the more likely they will accept.
+However, we see this note from the author of the dataset.
+`Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.`
+Given that we will not be using this value in our modeling, but it is still important to study it. 
+
+#### Calls analysis
+
+<img src="images/calls_acceptance_ratio.png"/>
+
+The number of calls may have a negative correlation with campaign acceptance.
+That is the more you call a prospect, the more likely they will say no.
+
+#### Calls X Duration analysis
+
+<img src="images/calls_vs_duration.png"/>
+
+I was surprised by this finding. I would have expected that the more calls would lead to brief conversation if a person
+ picked up, but there is barely a correlation between the values. 
+
