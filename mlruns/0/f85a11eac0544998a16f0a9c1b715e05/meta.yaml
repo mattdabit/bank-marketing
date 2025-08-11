@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/f85a11eac0544998a16f0a9c1b715e05/artifacts
+end_time: 1754888007834
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f85a11eac0544998a16f0a9c1b715e05
+run_name: secretive-mole-59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754888004040
+status: 3
+tags: []
+user_id: matt
