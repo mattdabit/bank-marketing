@@ -1,0 +1,1 @@
+{'smote__k_neighbors': [3, 5], 'smote__sampling_strategy': [0.3, 0.5], 'svc__C': [1, 10, 100], 'preprocessor__poly__degree': [2, 3]}
