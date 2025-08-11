@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/cf9e03f5edff4a1c965d4699738a13ef/artifacts
+end_time: 1754873534427
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cf9e03f5edff4a1c965d4699738a13ef
+run_name: masked-wasp-14
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754864810162
+status: 3
+tags: []
+user_id: matt

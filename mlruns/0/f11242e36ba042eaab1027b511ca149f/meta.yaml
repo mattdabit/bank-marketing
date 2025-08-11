@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/f11242e36ba042eaab1027b511ca149f/artifacts
+end_time: 1754861805808
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f11242e36ba042eaab1027b511ca149f
+run_name: welcoming-jay-941
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754861748501
+status: 3
+tags: []
+user_id: matt

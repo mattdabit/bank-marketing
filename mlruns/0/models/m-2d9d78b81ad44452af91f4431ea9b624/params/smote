@@ -1,0 +1,1 @@
+SMOTE(k_neighbors=3, random_state=42, sampling_strategy=0.5)

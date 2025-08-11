@@ -1,0 +1,7 @@
+[('preprocessor', ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2d8c4230>),
+                                ('onehot',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ed74440>),
+                                ('poly', PolynomialFeatures(include_bias=False),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ed74aa0>)])), ('smote', SMOTE(random_state=42)), ('forest', RandomForestClassifier(random_state=42))]

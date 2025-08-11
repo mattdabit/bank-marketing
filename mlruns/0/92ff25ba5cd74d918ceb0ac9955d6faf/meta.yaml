@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/92ff25ba5cd74d918ceb0ac9955d6faf/artifacts
+end_time: 1754861805808
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 92ff25ba5cd74d918ceb0ac9955d6faf
+run_name: puzzled-shad-470
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754861748501
+status: 3
+tags: []
+user_id: matt

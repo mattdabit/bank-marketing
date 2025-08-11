@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/fc7d699b368641709b790b71ffd53266/artifacts
+end_time: 1754878513989
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fc7d699b368641709b790b71ffd53266
+run_name: likeable-turtle-644
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754873635074
+status: 3
+tags: []
+user_id: matt

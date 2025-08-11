@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/5984877b8b4d4302a9d319a37c7002c8/artifacts
+end_time: 1754873534427
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5984877b8b4d4302a9d319a37c7002c8
+run_name: fortunate-bear-197
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754864810162
+status: 3
+tags: []
+user_id: matt

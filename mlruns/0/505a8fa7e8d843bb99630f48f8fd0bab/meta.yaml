@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/505a8fa7e8d843bb99630f48f8fd0bab/artifacts
+end_time: 1754878512840
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 505a8fa7e8d843bb99630f48f8fd0bab
+run_name: glamorous-sow-146
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754873635074
+status: 3
+tags: []
+user_id: matt

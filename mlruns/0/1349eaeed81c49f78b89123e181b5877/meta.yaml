@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/1349eaeed81c49f78b89123e181b5877/artifacts
+end_time: 1754878512840
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1349eaeed81c49f78b89123e181b5877
+run_name: funny-whale-199
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754873635074
+status: 3
+tags: []
+user_id: matt

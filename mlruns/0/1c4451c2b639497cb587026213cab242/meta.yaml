@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/1c4451c2b639497cb587026213cab242/artifacts
+end_time: 1754813227910
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1c4451c2b639497cb587026213cab242
+run_name: respected-pig-604
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754811777869
+status: 3
+tags: []
+user_id: matt

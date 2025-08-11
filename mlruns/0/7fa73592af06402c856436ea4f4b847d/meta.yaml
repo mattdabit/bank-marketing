@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/7fa73592af06402c856436ea4f4b847d/artifacts
+end_time: 1754864735700
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7fa73592af06402c856436ea4f4b847d
+run_name: unequaled-elk-751
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754861815242
+status: 4
+tags: []
+user_id: matt

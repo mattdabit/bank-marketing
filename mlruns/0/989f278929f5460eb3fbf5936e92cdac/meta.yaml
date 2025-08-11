@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/989f278929f5460eb3fbf5936e92cdac/artifacts
+end_time: 1754873535538
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 989f278929f5460eb3fbf5936e92cdac
+run_name: masked-midge-111
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754864810162
+status: 3
+tags: []
+user_id: matt

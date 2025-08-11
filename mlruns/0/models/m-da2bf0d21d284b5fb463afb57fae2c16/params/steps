@@ -1,0 +1,7 @@
+[('preprocessor', ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2cafd2b0>),
+                                ('onehot',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e341fedb0>),
+                                ('poly', PolynomialFeatures(include_bias=False),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e27f562d0>)])), ('smote', SMOTE(k_neighbors=3, random_state=42, sampling_strategy=0.5)), ('lr', LogisticRegression(C=1, max_iter=1000, random_state=42))]

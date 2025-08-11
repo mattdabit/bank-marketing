@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/4dc394d7222449069dc080321ee14a45/artifacts
+end_time: 1754860411232
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4dc394d7222449069dc080321ee14a45
+run_name: big-sheep-290
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754859497435
+status: 3
+tags: []
+user_id: matt

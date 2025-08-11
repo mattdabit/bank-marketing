@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/6b5d282099454d8d8285f197dc6cf41f/artifacts
+end_time: 1754861805808
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6b5d282099454d8d8285f197dc6cf41f
+run_name: rare-penguin-403
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754861748501
+status: 3
+tags: []
+user_id: matt

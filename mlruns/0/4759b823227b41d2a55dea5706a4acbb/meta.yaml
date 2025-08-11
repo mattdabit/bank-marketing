@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/4759b823227b41d2a55dea5706a4acbb/artifacts
+end_time: 1754860411232
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4759b823227b41d2a55dea5706a4acbb
+run_name: capricious-stork-237
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754859497435
+status: 3
+tags: []
+user_id: matt

@@ -1,0 +1,8 @@
+[('preprocessor', ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ed74b90>),
+                                ('onehot',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ed74920>),
+                                ('poly', PolynomialFeatures(include_bias=False),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ed77f80>)])), ('smote', SMOTE(k_neighbors=3, random_state=42, sampling_strategy=0.3)), ('tree', DecisionTreeClassifier(max_depth=3, min_samples_leaf=3, min_samples_split=4,
+                       random_state=42))]

@@ -1,0 +1,10 @@
+Pipeline(steps=[('preprocessor',
+                 ColumnTransformer(transformers=[('scaler', StandardScaler()),
+                                                 ('onehot',
+                                                  OneHotEncoder(handle_unknown='ignore'),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ede7950>),
+                                                 ('poly',
+                                                  PolynomialFeatures(include_bias=False),
+                                                  <sklearn.compose._column_transformer.make_column_selector object at 0x751e2ede77a0>)])),
+                ('smote', SMOTE()),
+                ('tree', DecisionTreeClassifier(random_state=42))])

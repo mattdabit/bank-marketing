@@ -1,0 +1,9 @@
+ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e109da1e0>),
+                                ('onehot',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e109d80b0>),
+                                ('poly',
+                                 PolynomialFeatures(degree=3,
+                                                    include_bias=False),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e109d9ac0>)])

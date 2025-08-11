@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/c2d9f307c1334003b387d27f158f5845/artifacts
+end_time: 1754860411232
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2d9f307c1334003b387d27f158f5845
+run_name: valuable-shrimp-59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754859497435
+status: 3
+tags: []
+user_id: matt

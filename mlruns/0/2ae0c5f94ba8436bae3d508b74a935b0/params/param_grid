@@ -1,0 +1,1 @@
+{'smote__k_neighbors': [3, 5], 'smote__sampling_strategy': [0.3, 0.5], 'tree__criterion': ['gini', 'entropy', 'log_loss'], 'tree__max_depth': [3, 4, 5], 'tree__min_samples_split': [4, 5], 'tree__min_samples_leaf': [3, 4, 5], 'preprocessor__poly__degree': [2, 3, 4]}

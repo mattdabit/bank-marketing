@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/e1a4e99213b84d678a1f2e130ba383b1/artifacts
+end_time: 1754861806918
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e1a4e99213b84d678a1f2e130ba383b1
+run_name: likeable-squid-466
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754861748501
+status: 3
+tags: []
+user_id: matt

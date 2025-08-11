@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/97c02783afb34bada05aa25f2a980cab/artifacts
+end_time: 1754861746654
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 97c02783afb34bada05aa25f2a980cab
+run_name: bald-hound-895
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754860413248
+status: 3
+tags: []
+user_id: matt

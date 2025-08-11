@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/8c5c5483b06140f9b5272aca198be4ff/artifacts
+end_time: 1754860412405
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8c5c5483b06140f9b5272aca198be4ff
+run_name: serious-shoat-123
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754859497435
+status: 3
+tags: []
+user_id: matt

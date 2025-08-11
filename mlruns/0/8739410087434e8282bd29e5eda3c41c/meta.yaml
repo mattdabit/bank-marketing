@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/8739410087434e8282bd29e5eda3c41c/artifacts
+end_time: 1754813227910
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8739410087434e8282bd29e5eda3c41c
+run_name: melodic-midge-170
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754811777869
+status: 3
+tags: []
+user_id: matt

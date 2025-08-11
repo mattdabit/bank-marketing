@@ -1,0 +1,41 @@
+artifact_path: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/models/m-2d9d78b81ad44452af91f4431ea9b624/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.11
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 3.2.0
+model_id: m-2d9d78b81ad44452af91f4431ea9b624
+model_size_bytes: 42085231
+model_uuid: m-2d9d78b81ad44452af91f4431ea9b624
+prompts: null
+run_id: e1a4e99213b84d678a1f2e130ba383b1
+signature:
+  inputs: '[{"type": "long", "name": "age", "required": true}, {"type": "string",
+    "name": "job", "required": true}, {"type": "string", "name": "marital", "required":
+    true}, {"type": "string", "name": "education", "required": true}, {"type": "string",
+    "name": "default", "required": true}, {"type": "string", "name": "housing", "required":
+    true}, {"type": "string", "name": "loan", "required": true}, {"type": "string",
+    "name": "contact", "required": true}, {"type": "string", "name": "month", "required":
+    true}, {"type": "string", "name": "day_of_week", "required": true}, {"type": "long",
+    "name": "campaign", "required": true}, {"type": "long", "name": "pdays", "required":
+    true}, {"type": "long", "name": "previous", "required": true}, {"type": "string",
+    "name": "poutcome", "required": true}, {"type": "double", "name": "emp.var.rate",
+    "required": true}, {"type": "double", "name": "cons.price.idx", "required": true},
+    {"type": "double", "name": "cons.conf.idx", "required": true}, {"type": "double",
+    "name": "euribor3m", "required": true}, {"type": "double", "name": "nr.employed",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "object", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-08-10 21:36:43.272437'

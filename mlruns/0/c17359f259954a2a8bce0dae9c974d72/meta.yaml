@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/c17359f259954a2a8bce0dae9c974d72/artifacts
+end_time: 1754813227910
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c17359f259954a2a8bce0dae9c974d72
+run_name: dapper-kit-470
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754811777869
+status: 3
+tags: []
+user_id: matt

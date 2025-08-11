@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/b61a32f2ef434cff901d8581706bf770/artifacts
+end_time: 1754861746654
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b61a32f2ef434cff901d8581706bf770
+run_name: redolent-ray-355
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754860413248
+status: 3
+tags: []
+user_id: matt

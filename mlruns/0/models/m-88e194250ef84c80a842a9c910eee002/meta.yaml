@@ -1,0 +1,10 @@
+artifact_location: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/models/m-88e194250ef84c80a842a9c910eee002/artifacts
+creation_timestamp: 1754878509651
+experiment_id: '0'
+last_updated_timestamp: 1754878512623
+model_id: m-88e194250ef84c80a842a9c910eee002
+model_type: null
+name: best_estimator
+source_run_id: fc7d699b368641709b790b71ffd53266
+status: 2
+status_message: null

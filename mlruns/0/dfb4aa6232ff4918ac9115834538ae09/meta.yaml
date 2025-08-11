@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/dfb4aa6232ff4918ac9115834538ae09/artifacts
+deleted_time: 1754813037285
+end_time: 1754811646796
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: dfb4aa6232ff4918ac9115834538ae09
+run_name: judicious-loon-494
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754811564785
+status: 4
+tags: []
+user_id: matt

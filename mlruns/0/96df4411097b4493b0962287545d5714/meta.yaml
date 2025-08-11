@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/96df4411097b4493b0962287545d5714/artifacts
+end_time: 1754861747800
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 96df4411097b4493b0962287545d5714
+run_name: useful-eel-354
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754860413248
+status: 3
+tags: []
+user_id: matt
