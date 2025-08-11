@@ -24,6 +24,19 @@ A repository focused on assessing whether someone will accept a marketing campai
         - [Consumer price index analysis](#consumer-price-index-analysis)
         - [Consumer confidence index analysis](#consumer-confidence-index-analysis)
         - [Previous outcome analysis](#previous-outcome-analysis)
+- [Data Preparation](#data-preparation)
+   - [Cleaning and imputation](#cleaning-and-imputation)
+   - [Defining our transformers](#defining-our-transformers)
+- [Models and Evaluation](#models-and-evaluation)
+  - [ML Flow](#ml-flow)
+  - [Baseline](#baseline)
+  - [DecisionTree](#decisiontree)
+  - [LogisiticRegression](#logisiticregression)
+  - [KNearestNeighbors](#knearestneighbors)
+  - [Support Vectors Classifier](#svc)
+  - [RandomForest](#randomforest)
+  - [Metric comparison](#metric-comparison)
+- [Next Steps and Recommendations](#next-steps-and-recommendations)
 
 ## Link to notebook
 
@@ -220,3 +233,169 @@ However, this could just be an outlier.
 
 Retention is over 65% for customers that previously accepted a campaign.
 It may be prudent to contact these types of customers to see why they chose our product. 
+
+## Data Preparation
+
+### Cleaning
+In accordance with the data author's recommendation, I dropped the duration column.
+In addition, I used the IQR method to remove outliers on age. 
+
+### Defining our transformers
+I added 3 transformers, a StandardScaler, OneHotEncoder and PolynomialFeatures. 
+
+## Models and Evaluation]
+I create 5 different types of models: LogisticRegression, DecisionTree, KNearestNeighbors, SVC, and RandomForest.
+I decided to prioritize recall for all models.
+Accuracy is not the best measure for imbalanced datasets.
+Ideally, the business will not want to miss a potential customer.
+This would mean that recall the ideal metric because of how recall penalizes false negatives.
+Since our positive label (`pos_label`) is `yes`, our negative label is `no`.
+A false negative in this case would be something our model would predict
+as `no` but it reality it would have been a `yes`.
+Now this is only in the context of our training and test data,
+in reality post-call surveys would be needed to better capture our model's true performance in the real world.
+Precision in this context will also be important to the business.
+High precision would reduce time wasted on dead leads.
+Since our baseline hit rate is around 12%, yes, a marginal increase would be a gigantic success. 
+
+### ML Flow
+In my prior project I had trouble experiment tracking.
+To better track my experiments, I use MLFlow.
+For others, I have also committed the files for MLFlow.
+Simply run `mlflow ui` to bring up the GUI for MLFlow and see the experiments I ran. 
+
+### Baseline
+Our baseline model predicts on frequency.
+This will give accuracy of around 88%.
+This may seem great at first look, but considering that our dummy classifier will always predict `no`
+it is absolutely useless. 
+
+### DecisionTree
+Here are the hyperparameters for the decision tree. 
+```python
+params = {
+    "smote__k_neighbors": [3, 5],
+    "smote__sampling_strategy": [0.3, 0.5],
+    "tree__criterion": ["gini", "entropy"],
+    "tree__max_depth": [3, 4, 5],
+    "tree__min_samples_split": [4, 5],
+    "tree__min_samples_leaf": [3, 4, 5],
+    "preprocessor__poly__degree": [2, 3],
+}
+```
+Here are the best parameters for the decision tree model.
+```json
+{
+  "preprocessor__poly__degree": 3,
+  "smote__k_neighbors": 5,
+  "smote__sampling_strategy": 0.3,
+  "tree__criterion": "gini",
+  "tree__max_depth": 3,
+  "tree__min_samples_leaf": 3,
+  "tree__min_samples_split": 4
+}
+```
+It took 15.2 minutes to train the model. 
+
+### LogisiticRegression
+
+### KNearestNeighbors
+
+### SVC
+
+### RandomForest
+
+### Metric comparison
+<table>
+    <thead>
+        <tr>
+            <th>Model Name</th>
+            <th>Train Accuracy</th>
+            <th>Test Accuracy</th>
+            <th>Train Precision</th>
+            <th>Test Precision</th>
+            <th>Train Recall</th>
+            <th>Test Recall</th>
+            <th>Train F1</th>
+            <th>Test F1</th>
+            <th>Best Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DecisionTreeClassifier</td>
+            <td>0.8783</td>
+            <td>0.8831</td>
+            <td>0.5070</td>
+            <td>0.5202</td>
+            <td>0.4607</td>
+            <td>0.4889</td>
+            <td>0.4827</td>
+            <td>0.5041</td>
+            <td>preprocessor__poly__degree: 3, smote__k_neighbors: 5, smote__sampling_strategy: 0.3, tree__criterion: gini, tree__max_depth: 3, tree__min_samples_leaf: 3, tree__min_samples_split: 4</td>
+        </tr>
+        <tr>
+            <td>LogisticRegression</td>
+            <td>0.8778</td>
+            <td>0.8796</td>
+            <td>0.4503</td>
+            <td>0.4528</td>
+            <td>0.4542</td>
+            <td>0.4719</td>
+            <td>0.4522</td>
+            <td>0.4622</td>
+            <td>lr__C: 1, lr__max_iter: 1000, lr__penalty: l2, preprocessor__poly__degree: 2, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
+        </tr>
+        <tr>
+            <td>KNeighborsClassifier</td>
+            <td>0.8975</td>
+            <td>0.8398</td>
+            <td>0.7027</td>
+            <td>0.4607</td>
+            <td>0.5323</td>
+            <td>0.3480</td>
+            <td>0.6058</td>
+            <td>0.3965</td>
+            <td>knn__n_neighbors: 5, preprocessor__poly__degree: 2, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
+        </tr>
+        <tr>
+            <td>SVC</td>
+            <td>0.8969</td>
+            <td>0.8976</td>
+            <td>0.2037</td>
+            <td>0.2056</td>
+            <td>0.6226</td>
+            <td>0.6679</td>
+            <td>0.3069</td>
+            <td>0.3144</td>
+            <td>preprocessor__poly__degree: 2, smote__k_neighbors: 3, smote__sampling_strategy: 0.3, svc__C: 0.1</td>
+        </tr>
+        <tr>
+            <td>RandomForestClassifier</td>
+            <td>0.8713</td>
+            <td>0.8734</td>
+            <td>0.5248</td>
+            <td>0.5270</td>
+            <td>0.4381</td>
+            <td>0.4536</td>
+            <td>0.4775</td>
+            <td>0.4875</td>
+            <td>forest__max_depth: 3, forest__min_samples_leaf: 3, forest__min_samples_split: 4, forest__n_estimators: 200, preprocessor__poly__degree: 3, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
+        </tr>
+        <tr>
+            <td>DummyClassifier</td>
+            <td>0.8880</td>
+            <td>0.8858</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Next Steps and Recommendations
