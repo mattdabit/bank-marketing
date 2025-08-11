@@ -117,6 +117,9 @@ It is also important to note that the pdays
 column using 999 to signify that fact the client was not priorly contacted.
 The author of this dataset also recommends
 avoiding the duration column as it highly affects the output.
+Intuitively, this makes sense as well,
+we cannot use duration as an input to our models
+as it is not something we would know before we phone a potential customer.
 
 ### Imbalance in the data
 
@@ -173,7 +176,8 @@ which found that June was a very successful month.
 The duration of a call seems to be a strong predictor; the longer someone is on the phone, the more likely they will accept.
 However, we see this note from the author of the dataset.
 `Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.`
-Given that we will not be using this value in our modeling, but it is still important to study it. 
+Given that we cannot use this value in our modeling, I will drop it from the training data.
+It is still important to study it to give insight to the business on how they should train their employees.
 
 #### Calls analysis
 
@@ -247,18 +251,18 @@ I added 3 transformers, a StandardScaler, OneHotEncoder, and PolynomialFeatures.
 I create 5 different types of models: LogisticRegression, DecisionTree, KNearestNeighbors, SVC, and RandomForest.
 I decided to prioritize precision for all models.
 Accuracy is not the best measure for imbalanced datasets.
-Ideally, the business will not want to miss a potential customer.
+The primary goal of our models is to determine if a customer is likely to accept the campaign.
+Ideally, the business will not want to chase dead leads; this wastes time and money.
 This would mean that precision is the ideal metric because of how precision penalizes false positives.
-The primary goal is to determine if a customer is likely to accept the campaign.
 With high precision we can prioritize those with a high acceptance rate.
 Since our positive label (`pos_label`) is `yes`, our negative label is `no`.
-A false negative in this case would be something our model would predict
-as `no` but it reality it would have been a `yes`.
 A false positive in this case would be something our model would predict
 as `yes` but it reality it would have been a `no`.
+A false negative in this case would be something our model would predict
+as `no` but it reality it would have been a `yes`.
 Now this is only in the context of our training and test data,
 in reality post-call surveys would be needed to better capture our model's true performance in the real world.
-Since our baseline hit rate is around 12%, yes, a marginal increase would be a gigantic success. 
+Since our baseline hit rate is around 12%, yes, a marginal increase would be a gigantic success.
 
 ### ML Flow
 In my prior project I had trouble experiment tracking.
@@ -286,30 +290,35 @@ params = {
 }
 ```
 Here are the best parameters for the decision tree model.
-```json
+```json 
 {
-  "preprocessor__poly__degree": 3,
-  "smote__k_neighbors": 5,
-  "smote__sampling_strategy": 0.3,
-  "tree__criterion": "gini",
-  "tree__max_depth": 3,
-  "tree__min_samples_leaf": 3,
-  "tree__min_samples_split": 4
+    "preprocessor__poly__degree": 2,
+    "smote__k_neighbors": 5,
+    "smote__sampling_strategy": 0.3,
+    "tree__criterion": "entropy",
+    "tree__max_depth": 5,
+    "tree__min_samples_leaf": 5,
+    "tree__min_samples_split": 4
 }
 ```
 I used these parameters to reduce the number of parameters for my random forest model.
-It took 15.2 minutes to train the model. 
+It took 14.7 minutes to train the model. 
 
 <img src="images/decision_tree_top_features.png"/>
 
 The top features of the decision tree model did not match the paper.
-In my analysis, I put less importance on the consumer confidence index, but it turned out to be the top feature.
+The day of the week seemed to be the most important feature for the decision tree model.
+Additionally,
+the consumer confidence index and the employment variation rate times the number of prior contacts were top features. 
 In a future experiment we ought
 to remove the PolynomialFeatures to see if that was adversely affecting the decision tree.
 
 <img src="images/tree_cm.png"/>
 
-In the above confusion matrix we see that the decision tree model was quite balanced. 
+In the above confusion matrix we see that the decision tree model is balanced.
+We do see
+that we get more true positives than false positives, 
+meaning at least 50% of the time our model accurately predicts the positive class.
 
 ### LogisticRegression
 Here are the hyperparameters for the logistic regression model.
@@ -327,25 +336,27 @@ Here are the best parameters for the logistic regression model.
 
 ```json
 {
-  "lr__C": 1,
-  "lr__max_iter": 1000,
+  "lr__C": 0.1,
+  "lr__max_iter": 500,
   "lr__penalty": "l2",
   "preprocessor__poly__degree": 2,
-  "smote__k_neighbors": 3,
-  "smote__sampling_strategy": 0.5
+  "smote__k_neighbors": 5,
+  "smote__sampling_strategy": 0.3
 }
 ```
-It took 22.2 minutes to train the model.
-I was surprised that our regularization term was best at 1. 
+
+It took 21 minutes to train the model.
+Regularization did have an impact on the coefficients. 
 
 <img src="images/logistic_regression_top_features.png"/>
 
-The top feature of the logistic regression model looks to be the month.
-This also was one of the top features in the paper. 
+The top feature of the logistic regression model was the month.
+This also was one of the top features in the paper.
 
 <img src="images/logistic_regression_cm.png"/>
 
-The amount of false negatives from the logistic regression model is concerning. However, there is still a decent balance.
+The model was just as accurate as the other models, but as we can see that is because it mostly predicted `no`.
+The number of true positives for the logistic regression model was not as good as the other models. 
 
 ### KNearestNeighbors
 Here are the hyperparameters for the k nearest neighbors model.
@@ -362,17 +373,19 @@ Here are the best parameters for the k nearest neighbors model.
 ```json
 {
   "knn__n_neighbors": 5,
-  "preprocessor__poly__degree": 2,
-  "smote__k_neighbors": 3,
-  "smote__sampling_strategy": 0.5
+  "preprocessor__poly__degree": 3,
+  "smote__k_neighbors": 5,
+  "smote__sampling_strategy": 0.3
 }
 ```
-It took 58.4 seconds to train the model.
+It took 1 minute to train the model.
 
 <img src="images/knn_cm.png"/>
 
-The KNN model overall was the worst model.
-We can see in the confusion matrix that the number of false positives is significantly more than all the other models. 
+The KNN model overall was the worst model when comparing test and training metrics.
+We likely overfitted this model.
+While the confusion matrix for this model looks good,
+the drop-in performance between the train and test datasets makes this model less appealing.
 
 ### Support Vector Classification.
 
@@ -397,9 +410,11 @@ Here are the best parameters for the support vector classification model.
 ```
 It took 2.4 hours to train the model.
 With the SVC model I had to cancel several runs for the length of time it was taking.
-This model did have the best recall. 
 
 <img src="images/svc_cm.png"/>
+
+The SVC model performed the best concerning recall, but it performed the worst concerning precision.
+This makes it an unreliable model for our business.
 
 ### RandomForest
 
@@ -418,19 +433,27 @@ params = {
 Here are the best parameters for the random forest model.
 ```json
 {
-    "forest__max_depth": 3,
+    "forest__max_depth": 5,
     "forest__min_samples_leaf": 3,
     "forest__min_samples_split": 4,
     "forest__n_estimators": 200,
-    "preprocessor__poly__degree": 3,
-    "smote__k_neighbors": 3,
-    "smote__sampling_strategy": 0.5
+    "preprocessor__poly__degree": 2,
+    "smote__k_neighbors": 5,
+    "smote__sampling_strategy": 0.3
 }
 ```
 
-It took 1.4 hours to train the model.
+It took 1.3 hours to train the model.
+
 <img src="images/forest_top_features.png"/>
+
+The top features for the random forest model were day of the week, loan status, and prior outcomes.
+I would have expected month to show up here to match the paper and our findings in our data analysis.
+
 <img src="images/forest_cm.png"/>
+
+The confusion matrix for the random forest models shows that it was the best when identifying true positives.
+This makes it our leading model. 
 
 ### Metric comparison
 <table>
@@ -450,40 +473,52 @@ It took 1.4 hours to train the model.
     </thead>
     <tbody>
         <tr>
+            <td>DummyClassifier</td>
+            <td>0.8880</td>
+            <td>0.8858</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>0.0000</td>
+            <td>-</td>
+        </tr>
+        <tr>
             <td>DecisionTreeClassifier</td>
-            <td>0.8783</td>
-            <td>0.8831</td>
-            <td>0.5070</td>
-            <td>0.5202</td>
-            <td>0.4607</td>
-            <td>0.4889</td>
-            <td>0.4827</td>
-            <td>0.5041</td>
-            <td>preprocessor__poly__degree: 3, smote__k_neighbors: 5, smote__sampling_strategy: 0.3, tree__criterion: gini, tree__max_depth: 3, tree__min_samples_leaf: 3, tree__min_samples_split: 4</td>
+            <td>0.8908</td>
+            <td>0.8911</td>
+            <td>0.4119</td>
+            <td>0.4202</td>
+            <td>0.5162</td>
+            <td>0.5297</td>
+            <td>0.4582</td>
+            <td>0.4687</td>
+            <td>preprocessor__poly__degree: 2, smote__k_neighbors: 5, smote__sampling_strategy: 0.3, tree__criterion: entropy, tree__max_depth: 5, tree__min_samples_leaf: 5, tree__min_samples_split: 4</td>
         </tr>
         <tr>
             <td>LogisticRegression</td>
-            <td>0.8778</td>
-            <td>0.8796</td>
-            <td>0.4503</td>
-            <td>0.4528</td>
-            <td>0.4542</td>
-            <td>0.4719</td>
-            <td>0.4522</td>
-            <td>0.4622</td>
-            <td>lr__C: 1, lr__max_iter: 1000, lr__penalty: l2, preprocessor__poly__degree: 2, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
+            <td>0.8917</td>
+            <td>0.8918</td>
+            <td>0.3372</td>
+            <td>0.3348</td>
+            <td>0.5262</td>
+            <td>0.5428</td>
+            <td>0.4110</td>
+            <td>0.4142</td>
+            <td>lr__C: 0.1, lr__max_iter: 500, lr__penalty: l2, preprocessor__poly__degree: 2, smote__k_neighbors: 5, smote__sampling_strategy: 0.3</td>
         </tr>
         <tr>
             <td>KNeighborsClassifier</td>
-            <td>0.8975</td>
-            <td>0.8398</td>
-            <td>0.7027</td>
-            <td>0.4607</td>
-            <td>0.5323</td>
-            <td>0.3480</td>
-            <td>0.6058</td>
-            <td>0.3965</td>
-            <td>knn__n_neighbors: 5, preprocessor__poly__degree: 2, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
+            <td>0.9089</td>
+            <td>0.8765</td>
+            <td>0.5394</td>
+            <td>0.4067</td>
+            <td>0.6049</td>
+            <td>0.4548</td>
+            <td>0.5703</td>
+            <td>0.4294</td>
+            <td>knn__n_neighbors: 5, preprocessor__poly__degree: 3, smote__k_neighbors: 5, smote__sampling_strategy: 0.3</td>
         </tr>
         <tr>
             <td>SVC</td>
@@ -499,27 +534,15 @@ It took 1.4 hours to train the model.
         </tr>
         <tr>
             <td>RandomForestClassifier</td>
-            <td>0.8713</td>
-            <td>0.8734</td>
-            <td>0.5248</td>
-            <td>0.5270</td>
-            <td>0.4381</td>
-            <td>0.4536</td>
-            <td>0.4775</td>
-            <td>0.4875</td>
-            <td>forest__max_depth: 3, forest__min_samples_leaf: 3, forest__min_samples_split: 4, forest__n_estimators: 200, preprocessor__poly__degree: 3, smote__k_neighbors: 3, smote__sampling_strategy: 0.5</td>
-        </tr>
-        <tr>
-            <td>DummyClassifier</td>
-            <td>0.8880</td>
-            <td>0.8858</td>
-            <td>0.0000</td>
-            <td>0.0000</td>
-            <td>0.0000</td>
-            <td>0.0000</td>
-            <td>0.0000</td>
-            <td>0.0000</td>
-            <td>-</td>
+            <td>0.8906</td>
+            <td>0.8910</td>
+            <td>0.4357</td>
+            <td>0.4270</td>
+            <td>0.5140</td>
+            <td>0.5285</td>
+            <td>0.4716</td>
+            <td>0.4723</td>
+            <td>forest__max_depth: 5, forest__min_samples_leaf: 3, forest__min_samples_split: 4, forest__n_estimators: 200, preprocessor__poly__degree: 2, smote__k_neighbors: 5, smote__sampling_strategy: 0.3</td>
         </tr>
     </tbody>
 </table>
@@ -527,15 +550,38 @@ It took 1.4 hours to train the model.
 
 <img src="images/metric_comparison.png"/>
 
-The best performer in terms of accuracy (~90%) and recall (~67%) was the SVC model.
-The low precision (~21%) tells us that this model will result in a lot of false positives.
-However, given that marketing campaigns already have a low number of hits prioritizing the recall may be best.
-The RandomForest, LogisticRegression, and DecisionTree models all have good balance.
+The KNearestNeighbor model was likely overfitted considering the difference between test and training metrics.
+The best performer in terms of test accuracy (~90%) and recall (~67%) was the SVC model.
+But the low precision (~20%) tells us that this model was mostly predicting no.
+This is not helpful for the business, so we can discard the SVC model as a candidate,
+or we can try fine-tuning other hyperparameters. 
+The RandomForest, LogisticRegression, and DecisionTree models all have good balance in terms of the f1 score.
 They all maintain decent precision with respectable recall.
-The KNearestNeighbor model may have overfitting considering the difference between test and training accuracy. 
+The RandomForest model had the best precision (~43%), meaning it is the best at reducing false positives.
+Considering our baseline model's performance, we can confidently say we can deliver a more precise model. 
 
 <img src="images/roc_curve_comparison.png"/>
 <img src="images/pr_curve_comparison.png"/>
 
+The RocAuc Curve and Precision-Recall Curve both mirror our findings.
+RandomForest is by far the best model at this task.
+When delivering results for the random forest model, we can see
+how we can adjust the probability threshold to further enhance our precision.
+Our banking partner ought to choose a threshold that balances precision and recall. 
+
 
 ## Next Steps and Recommendations
+
+As a banking institution running a marketing campaign, we want to avoid wasting resources on misclassified customers.
+This informs us to pursue higher precision rates. 
+The random forest model we built had the highest test precision of ~43%.
+The decision tree model had smaller precision at ~42%.
+The KNN, logistic regression, and SVC models lagged in precision compared to the tree-based models. 
+To that end I would recommend the random forest model to our stakeholders. 
+In consideration to each model we may want to consider the following: 
+For the random forest and decision tree models we may want
+to increase the `min_samples_leaf` hyperparameter check to 5–10.
+For the KNN model we should increase the number of neighbors to 7–21 to ensure more consensus for predictions. 
+For the SVC model we should increase our regularization term
+`C` to impose a higher penalty on the misclassified samples. 
+For the logistic regression model we should also try different values of `C` to tune the regularization of the model. 
