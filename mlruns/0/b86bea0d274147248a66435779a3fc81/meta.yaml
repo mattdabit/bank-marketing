@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/b86bea0d274147248a66435779a3fc81/artifacts
+end_time: 1754948661432
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b86bea0d274147248a66435779a3fc81
+run_name: overjoyed-chimp-183
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754940041496
+status: 3
+tags: []
+user_id: matt
