@@ -1,0 +1,1 @@
+make_scorer(precision_score, response_method='predict', pos_label=yes)

@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/603e9fa2bdef49e980a98928e7fea02d/artifacts
+end_time: 1754912075179
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 603e9fa2bdef49e980a98928e7fea02d
+run_name: unleashed-eel-823
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754907455901
+status: 3
+tags: []
+user_id: matt

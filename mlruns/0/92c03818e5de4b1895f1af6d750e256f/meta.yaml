@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/92c03818e5de4b1895f1af6d750e256f/artifacts
+end_time: 1754897466593
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 92c03818e5de4b1895f1af6d750e256f
+run_name: dapper-lynx-784
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754896588582
+status: 3
+tags: []
+user_id: matt

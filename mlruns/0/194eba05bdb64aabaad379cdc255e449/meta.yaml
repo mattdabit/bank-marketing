@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/194eba05bdb64aabaad379cdc255e449/artifacts
+end_time: 1754898729340
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 194eba05bdb64aabaad379cdc255e449
+run_name: skittish-whale-603
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754897468635
+status: 3
+tags: []
+user_id: matt

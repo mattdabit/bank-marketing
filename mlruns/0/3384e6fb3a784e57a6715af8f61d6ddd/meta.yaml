@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/3384e6fb3a784e57a6715af8f61d6ddd/artifacts
+end_time: 1754907359247
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3384e6fb3a784e57a6715af8f61d6ddd
+run_name: honorable-kit-788
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754898803632
+status: 3
+tags: []
+user_id: matt

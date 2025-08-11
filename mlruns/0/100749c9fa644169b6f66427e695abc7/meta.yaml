@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/100749c9fa644169b6f66427e695abc7/artifacts
+end_time: 1754907358146
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 100749c9fa644169b6f66427e695abc7
+run_name: wise-yak-160
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754898803632
+status: 3
+tags: []
+user_id: matt

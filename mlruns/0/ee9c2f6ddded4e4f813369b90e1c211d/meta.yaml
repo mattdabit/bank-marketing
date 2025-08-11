@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/ee9c2f6ddded4e4f813369b90e1c211d/artifacts
+end_time: 1754898728177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ee9c2f6ddded4e4f813369b90e1c211d
+run_name: flawless-skink-383
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754897468635
+status: 3
+tags: []
+user_id: matt

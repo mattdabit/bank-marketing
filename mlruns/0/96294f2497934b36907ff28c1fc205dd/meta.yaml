@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/96294f2497934b36907ff28c1fc205dd/artifacts
+end_time: 1754897467820
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 96294f2497934b36907ff28c1fc205dd
+run_name: defiant-gnu-977
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754896588582
+status: 3
+tags: []
+user_id: matt

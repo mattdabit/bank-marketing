@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/3bb5817127c04f47b1172644d47c7f68/artifacts
+end_time: 1754898728177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3bb5817127c04f47b1172644d47c7f68
+run_name: likeable-skunk-946
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754897468635
+status: 3
+tags: []
+user_id: matt

@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/71a8dc8d20ac45fc97aca535b252a4dd/artifacts
+end_time: 1754897466593
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 71a8dc8d20ac45fc97aca535b252a4dd
+run_name: magnificent-cat-785
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754896588582
+status: 3
+tags: []
+user_id: matt

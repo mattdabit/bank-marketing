@@ -1,0 +1,10 @@
+artifact_location: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/models/m-b01d35e7437b466d8885be5cc7e5f9c6/artifacts
+creation_timestamp: 1754898721498
+experiment_id: '0'
+last_updated_timestamp: 1754898723698
+model_id: m-b01d35e7437b466d8885be5cc7e5f9c6
+model_type: null
+name: model
+source_run_id: 194eba05bdb64aabaad379cdc255e449
+status: 2
+status_message: null

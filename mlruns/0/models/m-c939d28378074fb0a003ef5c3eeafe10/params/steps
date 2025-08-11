@@ -1,0 +1,9 @@
+[('preprocessor', ColumnTransformer(transformers=[('scaler', StandardScaler(),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e10357350>),
+                                ('onehot',
+                                 OneHotEncoder(handle_unknown='ignore'),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e10354200>),
+                                ('poly',
+                                 PolynomialFeatures(degree=3,
+                                                    include_bias=False),
+                                 <sklearn.compose._column_transformer.make_column_selector object at 0x751e2e395070>)])), ('smote', SMOTE(random_state=42, sampling_strategy=0.3)), ('knn', KNeighborsClassifier())]

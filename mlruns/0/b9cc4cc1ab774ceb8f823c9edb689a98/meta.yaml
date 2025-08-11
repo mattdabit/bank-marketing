@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/b9cc4cc1ab774ceb8f823c9edb689a98/artifacts
+end_time: 1754898728177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b9cc4cc1ab774ceb8f823c9edb689a98
+run_name: tasteful-stag-740
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754897468635
+status: 3
+tags: []
+user_id: matt

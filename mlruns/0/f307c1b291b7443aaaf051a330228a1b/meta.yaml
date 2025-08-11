@@ -1,0 +1,14 @@
+artifact_uri: file:///mnt/c/Users/Matt/workspace/Bank%20Marketing/mlruns/0/f307c1b291b7443aaaf051a330228a1b/artifacts
+end_time: 1754898791435
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f307c1b291b7443aaaf051a330228a1b
+run_name: fun-conch-640
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754898730204
+status: 3
+tags: []
+user_id: matt
