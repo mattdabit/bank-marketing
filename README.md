@@ -25,15 +25,15 @@ A repository focused on assessing whether someone will accept a marketing campai
         - [Consumer confidence index analysis](#consumer-confidence-index-analysis)
         - [Previous outcome analysis](#previous-outcome-analysis)
 - [Data Preparation](#data-preparation)
-   - [Cleaning and imputation](#cleaning-and-imputation)
+   - [Cleaning](#cleaning)
    - [Defining our transformers](#defining-our-transformers)
 - [Models and Evaluation](#models-and-evaluation)
   - [ML Flow](#ml-flow)
   - [Baseline](#baseline)
   - [DecisionTree](#decisiontree)
-  - [LogisiticRegression](#logisiticregression)
+  - [LogisticRegression](#logisticregression)
   - [KNearestNeighbors](#knearestneighbors)
-  - [Support Vectors Classifier](#svc)
+  - [Support Vectors Classifier](#support-vector-classification)
   - [RandomForest](#randomforest)
   - [Metric comparison](#metric-comparison)
 - [Next Steps and Recommendations](#next-steps-and-recommendations)
@@ -56,7 +56,7 @@ A repository focused on assessing whether someone will accept a marketing campai
 
 The dataset was procured from
 the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/bank+marketing). The data is from a
-Portugese bank. It contains a collection of marketing campaigns. The dataset is not missing any values and only contains
+Portuguese bank. It contains a collection of marketing campaigns. The dataset is not missing any values and only contains
 12 duplicates. I was quite inspired by
 the [paper](https://github.com/mattdabit/bank-marketing/blob/main/CRISP-DM-BANK.pdf) written by Sérgio Moro and Raul M.
 S. Laureano.
@@ -66,7 +66,7 @@ In my analysis I did find that some of their data findings do not match what I h
 
 It comes as no surprise that large marketing campaigns have negative sentiment amongst the general populace. Think about
 the last time you answered an unexpected phone call from an unknown number, if your experience is anything like my then,
-it was either a scam caller, telemarketer or survey taker. I find myself hanging up quickly when it comes to these types
+it was either a scam caller, telemarketer, or survey taker. I find myself hanging up quickly when it comes to these types
 of calls, if I were to ever answer them. Every failed cold call costs the company commissioning the campaign time and
 money. The bank partner commissioning this study is seeking to increase campaign success and reduce costs by focusing on
 profiles that are more likely to accept their offerings. The bank partner would like a model that can better predict the
@@ -143,7 +143,7 @@ index on age.
 
 <img src="images/job_acceptance_ratio.png"/>
 
-Given what we learned about the correlation between age and acceptance rate it should come to no suprise that students
+Given what we learned about the correlation between age and acceptance rate, it should come to no surprise that students
 and
 retirees are more likely to accept a campaign.
 
@@ -160,7 +160,7 @@ accept the campaign.
 <img src="images/month_acceptance_ratio.png"/>
 
 Timing seems to be an important factor in these campaigns.
-In particular, March, December, September and October all had high
+In particular, March, December, September, and October all had high
 acceptance rates.
 We may be able to leverage this as a business to reduce costs during slow months.
 This somewhat differs from the paper
@@ -241,21 +241,23 @@ In accordance with the data author's recommendation, I dropped the duration colu
 In addition, I used the IQR method to remove outliers on age. 
 
 ### Defining our transformers
-I added 3 transformers, a StandardScaler, OneHotEncoder and PolynomialFeatures. 
+I added 3 transformers, a StandardScaler, OneHotEncoder, and PolynomialFeatures. 
 
 ## Models and Evaluation]
 I create 5 different types of models: LogisticRegression, DecisionTree, KNearestNeighbors, SVC, and RandomForest.
-I decided to prioritize recall for all models.
+I decided to prioritize precision for all models.
 Accuracy is not the best measure for imbalanced datasets.
 Ideally, the business will not want to miss a potential customer.
-This would mean that recall the ideal metric because of how recall penalizes false negatives.
+This would mean that precision is the ideal metric because of how precision penalizes false positives.
+The primary goal is to determine if a customer is likely to accept the campaign.
+With high precision we can prioritize those with a high acceptance rate.
 Since our positive label (`pos_label`) is `yes`, our negative label is `no`.
 A false negative in this case would be something our model would predict
 as `no` but it reality it would have been a `yes`.
+A false positive in this case would be something our model would predict
+as `yes` but it reality it would have been a `no`.
 Now this is only in the context of our training and test data,
 in reality post-call surveys would be needed to better capture our model's true performance in the real world.
-Precision in this context will also be important to the business.
-High precision would reduce time wasted on dead leads.
 Since our baseline hit rate is around 12%, yes, a marginal increase would be a gigantic success. 
 
 ### ML Flow
@@ -271,7 +273,7 @@ This may seem great at first look, but considering that our dummy classifier wil
 it is absolutely useless. 
 
 ### DecisionTree
-Here are the hyperparameters for the decision tree. 
+Here are the hyperparameters for the decision tree model. 
 ```python
 params = {
     "smote__k_neighbors": [3, 5],
@@ -295,15 +297,140 @@ Here are the best parameters for the decision tree model.
   "tree__min_samples_split": 4
 }
 ```
+I used these parameters to reduce the number of parameters for my random forest model.
 It took 15.2 minutes to train the model. 
 
-### LogisiticRegression
+<img src="images/decision_tree_top_features.png"/>
+
+The top features of the decision tree model did not match the paper.
+In my analysis, I put less importance on the consumer confidence index, but it turned out to be the top feature.
+In a future experiment we ought
+to remove the PolynomialFeatures to see if that was adversely affecting the decision tree.
+
+<img src="images/tree_cm.png"/>
+
+In the above confusion matrix we see that the decision tree model was quite balanced. 
+
+### LogisticRegression
+Here are the hyperparameters for the logistic regression model.
+```python
+params = {
+    "smote__k_neighbors": [3, 5],
+    "smote__sampling_strategy": [0.3, 0.5],
+    "lr__penalty": ["l1", "l2", "elasticnet"],
+    "lr__max_iter": [500, 1000],
+    "lr__C": [0.01, 0.1, 1],
+    "preprocessor__poly__degree": [2, 3],
+}
+```
+Here are the best parameters for the logistic regression model.
+
+```json
+{
+  "lr__C": 1,
+  "lr__max_iter": 1000,
+  "lr__penalty": "l2",
+  "preprocessor__poly__degree": 2,
+  "smote__k_neighbors": 3,
+  "smote__sampling_strategy": 0.5
+}
+```
+It took 22.2 minutes to train the model.
+I was surprised that our regularization term was best at 1. 
+
+<img src="images/logistic_regression_top_features.png"/>
+
+The top feature of the logistic regression model looks to be the month.
+This also was one of the top features in the paper. 
+
+<img src="images/logistic_regression_cm.png"/>
+
+The amount of false negatives from the logistic regression model is concerning. However, there is still a decent balance.
 
 ### KNearestNeighbors
+Here are the hyperparameters for the k nearest neighbors model.
+```python
+params = {
+    "smote__k_neighbors": [3, 5],
+    "smote__sampling_strategy": [0.3, 0.5],
+    "knn__n_neighbors": [3, 5],
+    "preprocessor__poly__degree": [2, 3],
+}
+```
+Here are the best parameters for the k nearest neighbors model.
 
-### SVC
+```json
+{
+  "knn__n_neighbors": 5,
+  "preprocessor__poly__degree": 2,
+  "smote__k_neighbors": 3,
+  "smote__sampling_strategy": 0.5
+}
+```
+It took 58.4 seconds to train the model.
+
+<img src="images/knn_cm.png"/>
+
+The KNN model overall was the worst model.
+We can see in the confusion matrix that the number of false positives is significantly more than all the other models. 
+
+### Support Vector Classification.
+
+Here are the hyperparameters for the support vector classification model.
+```python
+params = {
+    "smote__k_neighbors": [3, 5],
+    "smote__sampling_strategy": [0.3, 0.5],
+    "svc__C": [0.01, 0.1, 1],
+    "preprocessor__poly__degree": [2, 3],
+}
+```
+Here are the best parameters for the support vector classification model.
+
+```json
+{
+  "preprocessor__poly__degree": 2,
+  "smote__k_neighbors": 3,
+  "smote__sampling_strategy": 0.3,
+  "svc__C": 0.1
+}
+```
+It took 2.4 hours to train the model.
+With the SVC model I had to cancel several runs for the length of time it was taking.
+This model did have the best recall. 
+
+<img src="images/svc_cm.png"/>
 
 ### RandomForest
+
+Here are the hyperparameters for the random forest model.
+```python
+params = {
+    "smote__k_neighbors": [3, 5],
+    "smote__sampling_strategy": [0.3, 0.5],
+    "forest__n_estimators": [100, 200],
+    "forest__max_depth": [3, 4, 5],
+    "forest__min_samples_split": [4, 5],
+    "forest__min_samples_leaf": [3, 4, 5],
+    "preprocessor__poly__degree": [2, 3],
+}
+```
+Here are the best parameters for the random forest model.
+```json
+{
+    "forest__max_depth": 3,
+    "forest__min_samples_leaf": 3,
+    "forest__min_samples_split": 4,
+    "forest__n_estimators": 200,
+    "preprocessor__poly__degree": 3,
+    "smote__k_neighbors": 3,
+    "smote__sampling_strategy": 0.5
+}
+```
+
+It took 1.4 hours to train the model.
+<img src="images/forest_top_features.png"/>
+<img src="images/forest_cm.png"/>
 
 ### Metric comparison
 <table>
@@ -396,6 +523,19 @@ It took 15.2 minutes to train the model.
         </tr>
     </tbody>
 </table>
+
+
+<img src="images/metric_comparison.png"/>
+
+The best performer in terms of accuracy (~90%) and recall (~67%) was the SVC model.
+The low precision (~21%) tells us that this model will result in a lot of false positives.
+However, given that marketing campaigns already have a low number of hits prioritizing the recall may be best.
+The RandomForest, LogisticRegression, and DecisionTree models all have good balance.
+They all maintain decent precision with respectable recall.
+The KNearestNeighbor model may have overfitting considering the difference between test and training accuracy. 
+
+<img src="images/roc_curve_comparison.png"/>
+<img src="images/pr_curve_comparison.png"/>
 
 
 ## Next Steps and Recommendations
