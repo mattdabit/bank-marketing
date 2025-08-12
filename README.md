@@ -204,7 +204,7 @@ to call on the 3rd and 6th days after their first call.
 
 #### Correlation Matrix
 
-<img src="images/correlation.png"/>
+<img src="images/bank_correlation.png"/>
 
 Social and economic attributes are highly correlated.
 This fact may lend itself to PCA or early feature pruning.
