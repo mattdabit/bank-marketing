@@ -1,6 +1,7 @@
 # bank-marketing
 
-A repository focused on assessing whether someone will accept a marketing campaign
+A repository focused on assessing whether someone will accept a marketing campaign.
+All of this is also available on my personal [website](https://matthewdabit.com/)
 
 ## Table of Contents
 
